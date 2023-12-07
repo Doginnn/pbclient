@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
+            $table->id('nu_seq_client');
+            $table->string('ds_nome');
+            $table->string('ds_nome_social');
+            $table->string('nu_cpf_cnpj')->unique();
+            $table->date('dt_nascimento')->nullable();
+            $table->string('ds_foto_path')->nullable();
             $table->timestamps();
         });
     }

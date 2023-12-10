@@ -40,10 +40,10 @@ class ClientController extends Controller
 
             $client->save();
 
-            return redirect()->route('clients.store')->with('success', 'Cliente cadastrado com sucesso.');
+            return redirect()->route('clients.create')->with('success', 'Cliente cadastrado com sucesso.');
         }
 
-        return redirect()->route('clients.store')->withInput()->with('error', 'CPF ou CNPJ já cadastrado em nossa base de dados.');
+        return redirect()->route('clients.create')->withInput()->with('error', 'CPF ou CNPJ já cadastrado em nossa base de dados.');
     }
 
     public function edit($nu_seq_client)

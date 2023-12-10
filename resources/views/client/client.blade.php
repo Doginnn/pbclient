@@ -60,7 +60,7 @@
                                 <input class="form-control" value="{{ old('ds_nome_social') }}" name="ds_nome_social" id="ds_nome_social" type="text" required>
                             </div>
                             <small class="form-text text-muted">Campo <b>Obrigatório*</b></small>
-                            @error('ds_nome')
+                            @error('ds_nome_social')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

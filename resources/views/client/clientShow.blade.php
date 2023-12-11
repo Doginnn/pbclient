@@ -14,7 +14,12 @@
                     <div class="col-md-12">
                         <div class="profile">
                             <div class="info">
-                                <img class="user-img" src="https://randomuser.me/api/portraits/lego/1.jpg">
+                                <!-- Verificação se há uma imagem associada ao cliente -->
+                                @if ($client->ds_foto_path)
+                                    <img class="user-img" src="{{ asset($client->ds_foto_path) }}" alt="Foto do Cliente">
+                                @else
+                                    <img class="user-img" src="{{ asset('images/avatar.png') }}" alt="Avatar Padrão">
+                                @endif
                                 <h4>{{ $client->ds_nome }}</h4>
                                 <p>Cliente</p>
                             </div>

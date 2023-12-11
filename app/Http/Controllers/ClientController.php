@@ -86,4 +86,11 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('error', 'Erro ao deletar Cliente.');
     }
+
+    public function show($nu_seq_client)
+    {
+        $client = Client::where('nu_seq_client', $nu_seq_client)->first();
+
+        return view('client.clientShow', compact('client'));
+    }
 }

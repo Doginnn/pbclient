@@ -56,7 +56,7 @@
                                     <td>{{ $client->ds_foto_path }}</td>
                                     <td class="d-flex justify-content-center">
                                         <a type="button" class="btn btn-success mr-2"
-                                           href="{{ route('clients.edit', $client->nu_seq_client) }}">
+                                           href="{{ route('clients.show', $client->nu_seq_client) }}">
                                             <i class="fa fa-user" aria-hidden="true"> Visualizar</i>
                                         </a>
                                         <a type="button" class="btn btn-warning mr-2"

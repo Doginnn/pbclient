@@ -41,7 +41,7 @@
                 <i class="fa fa-user fa-lg"></i>
             </a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                <li><a class="dropdown-item" href="#"><i class="fa fa-user-circle-o fa-lg"></i>Perfil</a></li>
+                <li><a class="dropdown-item" href="{{ url('/') }}"><i class="fa fa-user-circle-o fa-lg"></i>Perfil</a></li>
                 <li><a class="dropdown-item" href="{{ url('/') }}"><i class="fa fa-sign-out fa-lg"></i>Sair</a></li>
             </ul>
         </li>
@@ -78,21 +78,6 @@
                 </li>
             </ul>
         </li>
-        <li class="treeview">
-            <a class="app-menu__item" href="{{ url('/') }}" data-toggle="treeview">
-                <i class="app-menu__icon fa fa-gears"></i>
-                <span class="app-menu__label">Configurações</span>
-                <i class="treeview-indicator fa fa-angle-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-                    <a class="treeview-item" href="#"><i class="icon fa fa-users"></i>Usuários</a>
-                </li>
-                <li>
-                    <a class="treeview-item" href="#"><i class="icon fa fa-address-card"></i>Perfis</a>
-                </li>
-            </ul>
-        <li>
     </ul>
 </aside>
 <main class="app-content">

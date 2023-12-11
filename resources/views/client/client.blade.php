@@ -39,7 +39,7 @@
                         }, 4000);
                     </script><br><br>
                 @endif
-                <form action="{{ route('clients.store') }}" method="POST" autocomplete="off">
+                <form action="{{ route('clients.store') }}" method="POST" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="nu_seq_client" id="nu_seq_client" value="{{ old('nu_seq_client') }}">
                     <div class="row">
@@ -91,11 +91,12 @@
                                 <label for="ds_foto_path">Foto do Cliente</label>
                                 <input class="form-control" value="{{ old('ds_foto_path') }}" name="ds_foto_path" id="ds_foto_path" type="file">
                             </div>
-                            <small class="form-text text-muted" id="fileHelp">Enviar apenas arquivos .JPG ou .PNG</small>
+                            <small class="form-text text-muted" id="fileHelp">Enviar apenas arquivos jpg, jpeg ou png.</small>
+
+                            @error('ds_foto_path')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
-                        @error('ds_foto_path')
-                        <span class="text-danger">{{ $message }}</span>
-                        @enderror
 
                         <div class="row">
                             <div class="col-12 text-center">

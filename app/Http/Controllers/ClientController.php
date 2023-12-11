@@ -27,6 +27,15 @@ class ClientController extends Controller
         $cpfCnpjExist = Client::where('nu_cpf_cnpj', $cpfCnpj)->exists();
 
         if (!$cpfCnpjExist) {
+            $request->validate([
+                'ds_nome',
+                'ds_nome_social',
+                'nu_cpf_cnpj',
+                'dt_nascimento' => 'nullable',
+                'ds_foto_path' => 'nullable|file|mimes:jpeg,jpg,png|max:2048'
+            ], [
+                'ds_foto_path.mimes' => 'Apenas arquivos jpg, jpeg ou png.'
+            ]);
 
             $clientData = $request->only([
                 'ds_nome',
@@ -36,8 +45,15 @@ class ClientController extends Controller
                 'ds_foto_path'
             ]);
 
-            $client = new Client($clientData);
+            // Processo para armazenar a imagem
+            if ($request->hasFile('ds_foto_path')) {
+                $image = $request->file('ds_foto_path');
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('images'), $imageName);
+                $clientData['ds_foto_path'] = 'images/'.$imageName;
+            }
 
+            $client = new Client($clientData);
             $client->save();
 
             return redirect()->route('clients.create')->with('success', 'Cliente cadastrado com sucesso.');

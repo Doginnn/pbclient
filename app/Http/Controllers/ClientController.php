@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Validator;
 
 class ClientController extends Controller
 {
@@ -30,11 +31,13 @@ class ClientController extends Controller
             $request->validate([
                 'ds_nome',
                 'ds_nome_social',
-                'nu_cpf_cnpj',
+                'nu_cpf_cnpj' => 'required|numeric|unique:clients,nu_cpf_cnpj',
                 'dt_nascimento' => 'nullable',
                 'ds_foto_path' => 'nullable|file|mimes:jpeg,jpg,png|max:2048'
             ], [
-                'ds_foto_path.mimes' => 'Apenas arquivos jpg, jpeg ou png.'
+                'ds_foto_path.mimes' => 'Apenas arquivos jpg, jpeg ou png.',
+                'nu_cpf_cnpj.unique' => 'CPF ou CNPJ já cadastrado em nossa base de dados.',
+                'nu_cpf_cnpj.numeric' => 'O campo deve ser numérico.'
             ]);
 
             $clientData = $request->only([
